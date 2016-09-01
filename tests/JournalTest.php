@@ -15,4 +15,12 @@ class JournalTest extends TestCase
     {
         $this->assertTrue(true);
     }
+
+    //testing links
+    public function testLinks()
+    {
+        $this->visit('/')
+            ->click('Login')
+            ->seePageIs('/login');
+    }
 }

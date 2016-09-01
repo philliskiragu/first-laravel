@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Journal;
 use App\Http\Requests;
+use Carbon\Carbon;
 use Request;
 
 class EntriesController extends Controller
@@ -38,6 +39,7 @@ class EntriesController extends Controller
     public function store()
     {
         $input = \Request::all();
+        $input['published_at'] = Carbon::now();
 
         $journal = Journal::create($input);
 

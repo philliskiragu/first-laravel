@@ -1,11 +1,23 @@
-@extends('base')
+@extends('layouts.app')
 
 @section('content')
-    <h2>This week</h2>
+
     @foreach($entries as $entry)
-        <h2>
-            <a href="/journals/{{$entry->id}}">{{ $entry->title }}</a>
-        </h2>
-        <div class="body">{{$entry->body}}</div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="panel panel-default">
+                        <div class="panel panel-heading">
+                            <a href="/journals/{{$entry->id}}">Title: {{ $entry->title }}</a>
+                        </div>
+                        <div class="panel-body">
+                            {{$entry->body}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     @endforeach
+
 @stop

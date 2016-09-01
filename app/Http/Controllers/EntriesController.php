@@ -43,6 +43,6 @@ class EntriesController extends Controller
 
         $journal = Journal::create($input);
 
-        return redirect()->route('');
+        return redirect()->route('journals');
     }
 }

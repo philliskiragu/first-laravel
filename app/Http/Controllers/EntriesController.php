@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Journal;
 use App\Http\Requests;
+use App\Journal;
+use App\User;
 use Carbon\Carbon;
 use Request;
 
@@ -14,14 +15,19 @@ class EntriesController extends Controller
     {
         $this->middleware('auth');
     }
+
     // index function to display all journal entries
     public function index()
     {
         // fetch all entries from the journal table
-        $entries = Journal::all();
+//        $entries = Journal::all();
+
+        //get only the entries a user owns
+        $entries = User::findOrFail(1)->journal();
 
         return view('journals.index', compact('entries'));
     }
+
     // show function to display show 1 journal entry
     public function show($id)
     {
@@ -30,11 +36,13 @@ class EntriesController extends Controller
 
         return view('journals.show', compact('entry'));
     }
+
     // function to create an entry
     public function create()
     {
         return view('journals.create');
     }
+
     // stores a value
     public function store()
     {

@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use App\Journal;
 class User extends Authenticatable
 {
     /**
@@ -23,4 +24,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /*
+     * get journal entries for a specific user
+     */
+
+    public function journal()
+    {
+        return $this->hasMany('App\Journal');
+    }
 }

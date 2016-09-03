@@ -222,7 +222,7 @@ return [
         /*
          * mandrill alias
          */
-        'MandrillMail'  => Weblee\Mandrill\MandrillFacade::class
+        'MandrillMail' => Weblee\Mandrill\MandrillFacade::class
 
     ],
 

@@ -20,10 +20,10 @@ class EntriesController extends Controller
     public function index()
     {
         // fetch all entries from the journal table
-//        $entries = Journal::all();
+        $entries = Journal::all();
 
         //get only the entries a user owns
-        $entries = User::findOrFail(1)->journal();
+//        $entries = User::where('id',1)->with('journal')->first();
 
         return view('journals.index', compact('entries'));
     }
